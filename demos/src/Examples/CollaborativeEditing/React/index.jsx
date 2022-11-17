@@ -53,7 +53,8 @@ const getRandomRoom = () => getRandomElement(rooms)
 const getRandomColor = () => getRandomElement(colors)
 const getRandomName = () => getRandomElement(names)
 
-const room = getRandomRoom()
+// const room = getRandomRoom()
+const room = 'cswg'
 
 const ydoc = new Y.Doc()
 const websocketProvider = new HocuspocusProvider({
