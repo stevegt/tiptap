@@ -1,6 +1,6 @@
 import './styles.scss'
 
-import { HocuspocusProvider } from '@hocuspocus/provider'
+// import { HocuspocusProvider } from '@hocuspocus/provider'
 import CharacterCount from '@tiptap/extension-character-count'
 import Collaboration from '@tiptap/extension-collaboration'
 import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
@@ -14,6 +14,7 @@ import React, {
   useState,
 } from 'react'
 import * as Y from 'yjs'
+import { WebsocketProvider } from 'y-websocket'
 
 import MenuBar from './MenuBar'
 
@@ -57,6 +58,8 @@ const getRandomName = () => getRandomElement(names)
 const room = 'cswg'
 
 const ydoc = new Y.Doc()
+
+/*
 const websocketProvider = new HocuspocusProvider({
   url: 'wss://connect.hocuspocus.cloud',
   parameters: {
@@ -65,6 +68,11 @@ const websocketProvider = new HocuspocusProvider({
   name: room,
   document: ydoc,
 })
+*/
+
+// on europa:
+// cd ~/lab/yjs/websocket-server; PORT=3099 HOST=0.0.0.0 npx y-websocket
+const websocketProvider = new WebsocketProvider('ws://europa.d4.t7a.org:3099', 'cswg-demo', ydoc)
 
 const getInitialUser = () => {
   return JSON.parse(localStorage.getItem('currentUser')) || {
